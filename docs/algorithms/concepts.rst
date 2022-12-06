@@ -93,3 +93,18 @@ The algorithm container has access to several file mounts.
 Input
     The input file contains the user defined input. The user specifies this when a task is created.
 
+Wrappers
+---------
+
+Parquet
+^^^^^^^
+In the default wrapper, data is loaded from csv. The datatypes of the columns will then be guessed
+by `pandas.read_csv`. This is not always sufficient, and datatypes might be guessed incorrectly.
+
+Parquet is an open source file format that designed for efficient storage and retrieval.
+It has datatypes built in, and is supported by pandas as well.
+
+To make your algorithm support parquet you will need to adapt the `CMD` line in your `Dockerfile`
+to:
+`CMD poetry run python -c "from vantage6.tools.docker_wrapper import parquet_wrapper;
+parquet_wrapper('${PKG_NAME}')"`
