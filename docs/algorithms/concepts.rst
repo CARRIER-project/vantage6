@@ -105,6 +105,7 @@ Parquet is an open source file format that designed for efficient storage and re
 It has datatypes built in, and is supported by pandas as well.
 
 To make your algorithm support parquet you will need to adapt the `CMD` line in your `Dockerfile`
-to:
-`CMD poetry run python -c "from vantage6.tools.docker_wrapper import parquet_wrapper;
-parquet_wrapper('${PKG_NAME}')"`
+to::
+
+    CMD poetry run python -c "from vantage6.tools.docker_wrapper import parquet_wrapper; parquet_wrapper('${PKG_NAME}')"
+
